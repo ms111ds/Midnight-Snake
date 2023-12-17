@@ -1,0 +1,16 @@
+#version 460 core
+layout (location = 0) in vec2 position;
+layout (location = 1) in vec2 texture;
+
+out vec2 textureCoordinates;
+
+
+void main()
+{
+    gl_Position = vec4(position.xy, 0.0, 1.0);
+
+    // texture y coordinates need to be flipped as openGL expects
+    // 0.0 to be the bottom of the image, but images have 0.0 as
+    // the top
+    textureCoordinates = vec2(texture.x, 1.0f - texture.y); 
+}

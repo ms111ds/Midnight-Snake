@@ -1,0 +1,19 @@
+#version 460 core
+
+out vec4 final_colour;
+
+in vec2 textureCoordinates;
+
+uniform sampler2D snakeTexture;
+
+void main()
+{
+   //color = mix( texture(myTexture1, textureCoordinates), texture(myTexture2, textureCoordinates), 0.25 );
+
+   vec4 colour = texture(snakeTexture, textureCoordinates);
+   if ( colour.a < 0.1 )
+   {
+      discard;
+   }
+   final_colour = colour;
+}
